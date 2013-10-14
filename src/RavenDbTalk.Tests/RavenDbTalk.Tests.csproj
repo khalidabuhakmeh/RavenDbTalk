@@ -87,6 +87,7 @@
   <ItemGroup>
     <Compile Include="0_Introduction.cs" />
     <Compile Include="1_Modeling.cs" />
+    <Compile Include="Models\Example.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,6 @@
 using System.Linq;
 using FluentAssertions;
 using Raven.Client.Embedded;
-using Raven.Database.Server.Responders;
 using Raven.Tests.Helpers;
 using Xunit;
 
@@ -64,6 +63,31 @@ namespace RavenDbTalk.Tests
                     // oh there are none, we didn't do anything :)
                     var result = session.Query<object>().ToList();
                     result.Should().BeEmpty();
+                }
+            }
+        }
+
+        [Fact]
+        public void Must_call_save_changes_to_flush_changes_to_database()
+        {
+            using (var store = NewDocumentStore())
+            {
+                using (var session = store.OpenSession())
+                {
+                    var document = new {Id = "", Name = "Test"};
+                    
+                    // calling Store, set's the Id of the document
+                    // if the document does not have an Id set.
+                    session.Store(document);
+
+                    // flush the document to the database, if the
+                    // document store is a remote store, then a web
+                    // request is executed with the changes. 
+                    //
+                    // This is the Unit of Work pattern in action.
+                    session.SaveChanges();
+                    
+                    document.Id.Should().NotBeBlank();
                 }
             }
         }
