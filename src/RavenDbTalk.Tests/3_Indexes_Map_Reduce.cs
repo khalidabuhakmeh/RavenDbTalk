@@ -189,5 +189,10 @@ namespace RavenDbTalk.Tests
 
             }
         }
+
+        public override void Dispose()
+        {
+            _documentStore.Dispose();
+        }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System.Linq;
+using System.Runtime.InteropServices;
 using FluentAssertions;
 using Raven.Abstractions.Extensions;
+using Raven.Client;
 using Raven.Client.Embedded;
 using Raven.Client.Indexes;
 using Raven.Tests.Helpers;
@@ -29,8 +31,8 @@ namespace RavenDbTalk.Tests
         [Fact]
         public void Can_get_first_or_default_of_a_collection_using_linq()
         {
-           // RavenDb allows you to query using linq, and
-           // will create automatic indexes for you.
+            // RavenDb allows you to query using linq, and
+            // will create automatic indexes for you.
             using (var session = _documentStore.OpenSession())
             {
                 var result = session.Query<Example>()
@@ -145,6 +147,28 @@ namespace RavenDbTalk.Tests
                 Map = examples => from e in examples
                                   select new { e.Manufacturer };
             }
+        }
+
+        [Fact]
+        public void Can_only_get_128_documents_to_avoid_n_plus_one()
+        {
+            using (var store = _documentStore)
+            {
+                new Examples_ByManufacturer().Execute(store);
+                WaitForIndexing(store);
+
+                using (var session = store.OpenSession())
+                {
+                    RavenQueryStatistics stats;
+                    var result = session.Query<Example, Examples_ByManufacturer>()
+                        .Statistics(out stats)
+                        .ToList();
+
+                    result.Count.Should().Be(128);
+                    stats.TotalResults.Should().Be(200);
+                }
+            }
+
         }
 
         public override void Dispose()
