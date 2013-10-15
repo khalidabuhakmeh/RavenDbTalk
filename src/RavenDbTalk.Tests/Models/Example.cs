@@ -11,7 +11,7 @@ namespace RavenDbTalk.Tests.Models
         public DateTime Date { get; set; }
         public decimal Cost { get; set; }
         public int Quantity { get; set; }
-        public double Price { get; set; }
+        public decimal Price { get; set; }
         public IList<string> Tags { get; set; }
     }
 
@@ -55,31 +55,27 @@ namespace RavenDbTalk.Tests.Models
         public decimal Price { get; set; }
     }
 
-    public static class Helper
+    public class Dog
     {
-        public static Random Random = new Random();
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Owner { get; set; }
 
-        public static IList<Example> GetExamples(int count)
+        public void Woof()
         {
-            return Enumerable.Range(1, count)
-                 .Select(i =>
-                 {
-                     var example = new Example
-                                   {
-                                       Cost = Random.Next(1, 100),
-                                       Date = DateTime.Now.AddDays(Random.Next(1, 100)),
-                                       Manufacturer = string.Format("Company #{0}", Random.Next(1, 10)),
-                                       Price = Random.Next(1, 100),
-                                       Quantity = Random.Next(1, 100),
-                                       Tags = new[] {
-                                            "product",
-                                            string.Format("tag #{0}", Random.Next(1, 5))
-                                        }.ToList()
-                                   };
+            Console.WriteLine("Woof, Woof, Woof, Squirrel!");
+        }
+    }
 
-                     example.Tags.Add(example.Manufacturer);
-                     return example;
-                 }).ToList();
+    public class Cat
+    {
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Owner { get; set; }
+
+        public void Meooow()
+        {
+            Console.WriteLine("Meeeeeeeeeeow");
         }
     }
 }
