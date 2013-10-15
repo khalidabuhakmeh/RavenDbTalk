@@ -91,6 +91,7 @@
     <Compile Include="3_Indexes_Map_Reduce.cs" />
     <Compile Include="4_Search.cs" />
     <Compile Include="5_Set_Based_Operations.cs" />
+    <Compile Include="6_Faceted_Search.cs" />
     <Compile Include="Models\Example.cs" />
     <Compile Include="Models\Helper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
