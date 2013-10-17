@@ -34,6 +34,7 @@ namespace RavenDbTalk.Tests
                 using (var session = store.OpenSession())
                 {
                     session.Query<Example, RavenDocumentsByEntityName>()
+                        .Customize(x => x.WaitForNonStaleResultsAsOfNow())
                         .Count()
                         .Should().Be(0);
                 }
