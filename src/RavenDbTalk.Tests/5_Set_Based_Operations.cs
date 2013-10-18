@@ -66,7 +66,7 @@ namespace RavenDbTalk.Tests
                             Name = "Tags",
                             Value = "magic"
                         }
-                    }).WaitForCompletion();
+                    }, allowStale:true).WaitForCompletion();
 
                 using (var session = store.OpenSession())
                 {
