@@ -106,6 +106,7 @@
     <Compile Include="6_Faceted_Search.cs" />
     <Compile Include="7_More_Like_This.cs" />
     <Compile Include="8_Changes.cs" />
+    <Compile Include="9_Bulk_Import.cs" />
     <Compile Include="Models\Example.cs" />
     <Compile Include="Models\FamousQuote.cs" />
     <Compile Include="Models\Helper.cs" />
