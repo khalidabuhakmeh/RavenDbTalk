@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.Routing;
+﻿using System.Web.Mvc;
+using RavenDbTalk.Web.App_Start;
+using RestfulRouting;
 
 namespace RavenDbTalk.Web
 {
@@ -14,11 +10,13 @@ namespace RavenDbTalk.Web
     {
         protected void Application_Start()
         {
-            AreaRegistration.RegisterAllAreas();
-
-            WebApiConfig.Register(GlobalConfiguration.Configuration);
+            Routes.Start();
+            RavenDbConfiguration.Start();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            /* View Engines */
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new RestfulRoutingRazorViewEngine());
         }
     }
 }

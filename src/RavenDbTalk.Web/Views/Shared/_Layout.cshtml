@@ -1,0 +1,87 @@
+﻿@using WhatRoute.Core
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Quotely - inspiring quotes for everyone">
+    <meta name="author" content="Khalid Abuhakmeh">
+    @*<link rel="shortcut icon" href="../../assets/ico/favicon.png">*@
+
+    <title>Quotely - inspiring quotes for everyone</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="~/Content/css/custom.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="~/content/js/html5shiv.js"></script>
+      <script src="~/content/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("index", "home")">
+                    Quotely
+                    <i class="glyphicon glyphicon-comment"></i>
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="@Html.IsActiveCss(new { action = "index", controller = "home" })">
+                        <a href="@Url.Action("index", "home")">Home</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quotes <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("index", "quotes")">All</a></li>
+                            @Html.Action("index", "menus")
+                        </ul>
+                    </li>
+                    <li class="@Html.IsActiveCss(new { action = "index", controller = "categories" })">
+                        <a href="@Url.Action("index", "categories")">Categories</a>
+                    </li>
+                    <li class="@Html.IsActiveCss(new { action = "index", controller = "authors" })">
+                        <a href="@Url.Action("index", "authors")">Authors</a>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-right" action="@Url.Action("index", "quotes")" method="GET">
+                    <div class="form-group">
+                        <input type="search" name="q" placeholder="search quotes..." class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-success">
+                        <i class="glyphicon glyphicon-search"></i>
+                        Search
+                    </button>
+                </form>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+
+    <div class="container">
+
+       @RenderBody()
+
+    </div> <!-- /container -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="~/content/js/jquery.min.js"></script>
+    <script src="~/content/js/bootstrap.min.js"></script>
+</body>
+</html>

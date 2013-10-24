@@ -1,0 +1,34 @@
+﻿@using PagedList.Mvc
+@model RavenDbTalk.Web.Models.ViewModels.Categories.IndexModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="page-header">
+    <h2> Categories &raquo; All </h2>
+</div>
+
+<div class="text-center">
+    <div class="pagination pagination-lg">
+        @Html.PagedListPager(Model.Categories, i => Url.Action("index", new { page = i, size = Model.Categories.PageSize }))
+    </div>
+</div>
+
+<div class="row">
+    @foreach (var category in Model.Categories)
+    {
+        <div class="col-lg-4">
+            <p>
+                <a class="btn btn-info btn-block" href="@Url.Action("index", "quotes", new { category = @category.Category })">
+                    @category.Category (@category.Count)
+                </a>
+            </p>
+        </div>
+    }
+</div>
+
+<div class="text-center">
+    <div class="pagination pagination-lg">
+        @Html.PagedListPager(Model.Categories, i => Url.Action("index", new { page = i, size = Model.Categories.PageSize }))
+    </div>
+</div>

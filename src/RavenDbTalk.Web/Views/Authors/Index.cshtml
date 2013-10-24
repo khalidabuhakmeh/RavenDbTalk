@@ -1,0 +1,81 @@
+﻿@using PagedList.Mvc
+@model RavenDbTalk.Web.Models.ViewModels.Authors.IndexModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="page-header">
+    <h2> <a href="@Url.Action("index", "authors")">Authors</a> &raquo; @Model.Header </h2>
+</div>
+
+@using (Html.BeginForm("index", "Authors", FormMethod.Get))
+{
+    <div class="input-group">
+        @Html.TextBox("q", Model.Query, new { @class = "form-control", placeholder = "search for inspiration..." })
+        <span class="input-group-btn">
+            <button class="btn btn-success" type="submit">
+                <i class="glyphicon glyphicon-search"></i>
+            </button>
+        </span>
+    </div><!-- /input-group -->
+}
+
+<div class="text-center">
+    <div class="pagination pagination-lg">
+        @Html.PagedListPager(Model.Authors, i => Url.Action("index", new { page = i, size = Model.Authors.PageSize }))
+    </div>
+</div>
+
+<div class="row">
+    @foreach (var author in Model.Authors)
+    {
+        <div class="col-lg-4">
+            <p>
+                <a class="btn btn-info btn-block" href="@Url.Action("index", "quotes", new { by = author.By })">
+                    @author.By (@author.Count)
+                </a>
+            </p>
+        </div>
+    }
+
+    @if (Model.HasSuggestions)
+    {
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Ooops... No Results Found. Do any of these suggestions look helpful?
+                </div>
+                <div class="panel-body">
+                    <p>
+                        @foreach (var suggestion in Model.Suggestions.Suggestions)
+                        {
+                            <a class="label label-default" style="font-size: 18px; display: inline-block; margin: 8px" href="@Url.Action("index", "authors", new {q = suggestion})"> @suggestion</a>
+                        }
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+    else if (!Model.Authors.Any())
+    {
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Ooops... No Results Found.
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Sorry but we couldn't find any authors at this time, please forgive us.
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+
+<div class="text-center">
+    <div class="pagination pagination-lg">
+        @Html.PagedListPager(Model.Authors, i => Url.Action("index", new { page = i, size = Model.Authors.PageSize }))
+    </div>
+</div>

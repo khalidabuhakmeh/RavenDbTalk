@@ -1,0 +1,21 @@
+﻿@model RavenDbTalk.Web.Models.ViewModels.Menus.IndexModel
+<li class="divider"></li>
+<li class="dropdown-header">
+    <i class="glyphicon glyphicon-heart"></i>
+    Popular Categories
+</li>
+<li class="divider"></li>
+@foreach (var category in Model.Categories)
+{
+    <li><a href="@Url.Action("index", "quotes", new { category = category.Category })">@category.Category (@category.Count)</a></li>
+}
+<li class="divider"></li>
+<li class="dropdown-header">
+    <i class="glyphicon glyphicon-heart"></i>
+    Popular Authors
+</li>
+<li class="divider"></li>
+@foreach (var author in Model.Authors)
+{
+    <li><a href="@Url.Action("index", "quotes", new { by = author.By })">@author.By (@author.Count)</a></li>
+}

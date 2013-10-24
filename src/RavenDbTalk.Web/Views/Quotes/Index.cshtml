@@ -1,0 +1,57 @@
+﻿@using PagedList.Mvc
+@model RavenDbTalk.Web.Models.ViewModels.Quotes.IndexModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="page-header">
+    <h2>
+        <a href="@Url.Action("index", "quotes")">Quotes</a> &raquo; @Model.Header 
+    </h2>
+</div>
+
+@using (Html.BeginForm("index", "quotes", FormMethod.Get))
+{
+    <div class="input-group">
+    @Html.TextBox("Q", Model.Query, new { @class = "form-control", placeholder = "search for inspiration..." })
+    <span class="input-group-btn">
+        <button class="btn btn-success" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+        </button>
+    </span>
+</div><!-- /input-group -->
+}
+
+<div class="text-center">
+    <div class="pagination pagination-lg">
+        @Html.PagedListPager(Model.Quotes, i => Url.Action("index", new { page = i, size = Model.Size }))
+    </div>
+</div>
+
+
+
+<div class="row">
+    @foreach (var quote in Model.Quotes)
+    {
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <a href="@Url.Action("index", "quotes", new { by = quote.By })" class="label label-success">@quote.By</a>
+                    <a href="@Url.Action("index", "quotes", new { category = quote.Category })" class="label label-info">@quote.Category</a>
+                </div>
+                <div class="panel-body">
+                    <blockquote>
+                        <p>@quote.Text</p>
+                        <cite>- @quote.By</cite>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="text-center">
+    <div class="pagination pagination-lg">
+        @Html.PagedListPager(Model.Quotes, i => Url.Action("index", new { page = i, size = Model.Size }))
+    </div>
+</div>
