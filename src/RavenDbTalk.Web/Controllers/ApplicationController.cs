@@ -1,5 +1,6 @@
 using System;
 using System.Web.Mvc;
+using MvcFlash.Core;
 using Raven.Client;
 using RavenDbTalk.Web.App_Start;
 using RestfulRouting.Format;
@@ -9,6 +10,7 @@ namespace RavenDbTalk.Web.Controllers
     public abstract class ApplicationController : Controller
     {
         public IDocumentSession Db { get; private set; }
+        public IFlashPusher Flash { get { return MvcFlash.Core.Flash.Instance; } }
 
         protected ActionResult RespondTo(Action<FormatCollection> format)
         {

@@ -17,7 +17,7 @@ namespace RavenDbTalk.Web.Controllers
             var model = new IndexModel(search);
 
             var query = Db.Query<Quotes_ByAuthor.Result, Quotes_ByAuthor>()
-                .If(model.HasQuery, q => q.Search(x => x.By, model.Query))
+                .If(model.HasQuery, q => q.Search(x => x.By, model.Query, escapeQueryOptions: EscapeQueryOptions.AllowPostfixWildcard))
                 .OrderBy(x => x.By);
 
             model.Authors = query

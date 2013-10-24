@@ -25,8 +25,7 @@ namespace RavenDbTalk.Web.Models.Indexes
                     Content = new[] { q.By, q.Category, q.Text }
                 };
 
-            Store(x => x.Category, FieldStorage.Yes);
-            Store(x => x.By, FieldStorage.Yes);
+            StoreAllFields(FieldStorage.Yes);
             Index(x => x.Content, FieldIndexing.Analyzed);
         }
     }

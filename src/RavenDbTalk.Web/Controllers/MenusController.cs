@@ -15,20 +15,24 @@ namespace RavenDbTalk.Web.Controllers
         {
             var model = new IndexModel();
             
-            model.Categories = Db.Query<Quotes_ByCategory.Result, Quotes_ByCategory>()
+            var categories = Db.Query<Quotes_ByCategory.Result, Quotes_ByCategory>()
                 .OrderByDescending(x => x.Count)
                 .ThenByDescending(x => x.Category)
                 .Take(5)
                 .As<CategoryWithCount>()
-                .ToList();
+                .Lazily();
 
-            model.Authors = Db.Query<Quotes_ByAuthor.Result, Quotes_ByAuthor>()
+            var authors  = Db.Query<Quotes_ByAuthor.Result, Quotes_ByAuthor>()
                 .OrderByDescending(x => x.Count)
                 .ThenByDescending(x => x.By)
                 .Take(5)
                 .As<AuthorViewModel>()
-                .ToList();
+                .Lazily();
 
+            Db.Advanced.Eagerly.ExecuteAllPendingLazyOperations();
+
+            model.Categories = categories.Value.ToList();
+            model.Authors = authors.Value.ToList();
 
             return PartialView(model);
         }

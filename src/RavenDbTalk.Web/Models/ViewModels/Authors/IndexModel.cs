@@ -35,14 +35,7 @@ namespace RavenDbTalk.Web.Models.ViewModels.Authors
                 
                 if (HasQuery) list.Add(string.Format("\"{0}\"", Query));
 
-                if (list.Any())
-                {
-                    sb.Append(string.Join("/", list));
-                }
-                else
-                {
-                    sb.Append("All");
-                }
+                sb.Append(list.Any() ? string.Join("/", list) : "All");
 
                 return sb.ToString();
             }

@@ -1,4 +1,67 @@
 ﻿body {
-  min-height: 2000px;
-  padding-top: 70px;
+  padding-top: 100px;
 }
+
+.alert-error {
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+}
+
+.alert-error hr {
+  border-top-color: #e6c1c7;
+}
+
+.alert-error .alert-link {
+  color: #953b39;
+}
+
+.bs-callout {
+margin: 20px 0;
+padding: 15px 30px 15px 15px;
+border-left: 5px solid #eee;
+}
+
+.bs-callout-warning {
+background-color: #fefbed;
+border-color: #f1e7bc;
+}
+
+
+@media (max-width: 767px) {
+    #layout-search {
+        width: auto;
+        display: block;
+    }  
+
+    #layout-search .input-group {
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+    }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991px) {
+    #layout-search {
+        width: auto;
+    }  
+
+     body {
+        padding-top: 140px !important;
+    }
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199px) {
+    #layout-search {
+        width: 200px;
+    }    
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    #layout-search {
+        width: 400px;
+    }      
+}
+

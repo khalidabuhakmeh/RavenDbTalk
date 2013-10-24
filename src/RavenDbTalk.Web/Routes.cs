@@ -16,6 +16,11 @@ namespace RavenDbTalk.Web
             map.Resources<CategoriesController>();
             map.Resources<AuthorsController>();
             map.Resources<MenusController>();
+            map.Resources<UserQuotesController>(uq =>
+            {
+                uq.As("user-quotes");
+                uq.Only("create");
+            });
         }
 
         public static void Start()

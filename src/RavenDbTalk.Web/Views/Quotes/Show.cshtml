@@ -1,0 +1,28 @@
+﻿@model RavenDbTalk.Web.Models.ViewModels.Quotes.ShowModel
+
+@{
+    ViewBag.Title = "Show";
+}
+
+<div class="page-header">
+    <h2>
+        <a href="@Url.Action("index", "quotes")">Quotes</a> &raquo; Quote
+    </h2>
+</div>
+
+<div class="row">
+    @Html.Partial("_Quote", Model.Quote)
+</div>
+
+<div class="page-header">
+    <h3>
+        More Like This (@Model.MoreLikeThis.Count)
+    </h3>
+</div>
+
+<div class="row">
+    @foreach (var quote in Model.MoreLikeThis)
+    {
+        @Html.Partial("_Quote", quote)
+    }
+</div>

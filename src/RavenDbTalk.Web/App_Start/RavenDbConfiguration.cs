@@ -19,6 +19,9 @@ namespace RavenDbTalk.Web.App_Start
         {
             // create indexes from this assembly
             IndexCreation.CreateIndexes(typeof(RavenDbConfiguration).Assembly, DocumentStore);
+
+            /* Mvc Integration */
+            Raven.Client.MvcIntegration.RavenProfiler.InitializeFor(DocumentStore);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Raven.Abstractions.Indexing;
 using Raven.Client.Indexes;
 using RavenDbTalk.Web.Models.Domain;
 
@@ -29,6 +30,8 @@ namespace RavenDbTalk.Web.Models.Indexes
                                         Category = g.Key,
                                         Count = g.Sum(x => x.Count),
                                     };
+
+            Index(x => x.Category, FieldIndexing.Analyzed);
         }
     }
 }

@@ -1,10 +1,131 @@
-﻿
- <!-- Main component for a primary marketing message or call to action -->
-<div class="jumbotron">
-    <h1>Navbar example</h1>
-    <p>This example is a quick exercise to illustrate how the default, static and fixed to top navbar work. It includes the responsive CSS and HTML, so it also adapts to your viewport and device.</p>
-    <p>To see the difference between static and fixed top navbars, just scroll.</p>
+﻿@model RavenDbTalk.Web.Models.ViewModels.Home.IndexModel
+<!-- Main component for a primary marketing message or call to action -->
+<div class="jumbotron text-center">
+    <h1>
+        Quotely <i class="glyphicon glyphicon-comment"></i>
+        <hr />
+    </h1>
     <p>
-        <a class="btn btn-lg btn-primary" href="../../components/#navbar">View navbar docs &raquo;</a>
+        We draw strength from ourselves, but draw inspiration from others. Use this amazing database of quotes to enhance your life.
+        <hr />
     </p>
+    <p>
+        <a class="btn btn-lg btn-success btn-block" href="@Url.Action("index", "quotes")">Go To Quotes &raquo;</a>
+    </p>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-header">
+            <h2>
+                <i class="glyphicon glyphicon-comment pull-right"></i>
+                Random Quote
+            </h2>
+        </div>
+    </div>
+    @Html.Partial("_Quote", Model.RandomQuote)
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <a class="btn btn-primary btn-block" href="@Url.Action("index", "quotes")">
+            See More
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-header">
+            <h2>
+                <i class="glyphicon glyphicon-bookmark pull-right"></i>
+                Random Categories
+            </h2>
+        </div>
+    </div>
+    @foreach (var category in Model.RandomCategories)
+    {
+        <div class="col-lg-4">
+            <p>
+                <a class="btn btn-info btn-block" href="@Url.Action("index", "quotes", new { category = @category.Category })">
+                    @category.Category (@category.Count)
+                </a>
+            </p>
+        </div>
+    }
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <a class="btn btn-primary btn-block" href="@Url.Action("index", "categories")">
+            See More
+        </a>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="page-header">
+            <h2>
+                <i class="glyphicon glyphicon-user pull-right"></i>
+                Random Authors
+            </h2>
+        </div>
+    </div>
+    @foreach (var author in Model.RandomAuthors)
+    {
+        <div class="col-lg-4">
+            <p>
+                <a class="btn btn-info btn-block" href="@Url.Action("index", "quotes", new { by = author.By })">
+                    @author.By (@author.Count)
+                </a>
+            </p>
+        </div>
+    }
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <a class="btn btn-primary btn-block" href="@Url.Action("index", "quotes")">
+            See More
+        </a>
+    </div>
+</div>
+
+<div class="col-lg-12">
+    <div class="page-header">
+        <h2 id="submitQuote">
+            <i class="fa fa-pencil pull-right"></i>
+            Submit Your Own Quote
+        </h2>
+    </div>
+    <div class="col-lg-12">
+        <div class="bs-callout bs-callout-warning">
+            <h4>Have a favorite quote? </h4>
+            <p>
+                Share it with the world and spread the word.
+            </p>
+        </div>
+        
+        @using (Html.BeginForm("create", "userquotes"))
+        {
+            <div class="form-group">
+                <label for="by">Author</label>
+                @Html.TextBox("by", "", new { placeholder = "author's name", @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label for="text">Quote</label>
+                @Html.TextArea("Text", "", new { placeholder = "author's words", @class = "form-control", rows = "3" })
+            </div>
+            <button type="submit" class="btn btn-success btn-block">
+                <i class="fa fa-check"></i>
+                Submit
+            </button>
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <hr />
+    </div>
 </div>

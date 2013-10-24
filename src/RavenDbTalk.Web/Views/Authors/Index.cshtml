@@ -11,7 +11,7 @@
 @using (Html.BeginForm("index", "Authors", FormMethod.Get))
 {
     <div class="input-group">
-        @Html.TextBox("q", Model.Query, new { @class = "form-control", placeholder = "search for inspiration..." })
+        @Html.TextBox("q", Model.Query, new { @class = "form-control", placeholder = "search for an author..." })
         <span class="input-group-btn">
             <button class="btn btn-success" type="submit">
                 <i class="glyphicon glyphicon-search"></i>

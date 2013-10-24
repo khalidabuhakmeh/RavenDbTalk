@@ -1,4 +1,5 @@
-﻿@using WhatRoute.Core
+﻿@using MvcFlash.Core.Extensions
+@using WhatRoute.Core
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +24,7 @@
       <script src="~/content/js/html5shiv.js"></script>
       <script src="~/content/js/respond.min.js"></script>
     <![endif]-->
+    @Raven.Client.MvcIntegration.RavenProfiler.CurrentRequestSessions()
 </head>
 
 <body>
@@ -44,39 +46,68 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="@Html.IsActiveCss(new { action = "index", controller = "home" })">
-                        <a href="@Url.Action("index", "home")">Home</a>
+                        <a href="@Url.Action("index", "home")">
+                            <i class="fa fa-home"></i>
+                            Home
+                        </a>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Quotes <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="fa fa-comment-o"></i>
+                            Quotes <b class="caret"></b>
+                        </a>
                         <ul class="dropdown-menu">
                             <li><a href="@Url.Action("index", "quotes")">All</a></li>
                             @Html.Action("index", "menus")
                         </ul>
                     </li>
                     <li class="@Html.IsActiveCss(new { action = "index", controller = "categories" })">
-                        <a href="@Url.Action("index", "categories")">Categories</a>
+                        <a href="@Url.Action("index", "categories")">
+                            <i class="fa fa-list-ol"></i>
+                            Categories
+                        </a>
                     </li>
                     <li class="@Html.IsActiveCss(new { action = "index", controller = "authors" })">
-                        <a href="@Url.Action("index", "authors")">Authors</a>
+                        <a href="@Url.Action("index", "authors")">
+                            <i class="fa fa-user"></i>
+                            Authors
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("index", "home")#submitQuote">
+                            <i class="fa fa-edit"></i>
+                            Submit a Quote
+                        </a>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-right" action="@Url.Action("index", "quotes")" method="GET">
-                    <div class="form-group">
+                <form id="layout-search" class="navbar-form navbar-right" action="@Url.Action("index", "quotes")" method="GET">
+                    @*<div class="form-group">
                         <input type="search" name="q" placeholder="search quotes..." class="form-control">
                     </div>
                     <button type="submit" class="btn btn-success">
                         <i class="glyphicon glyphicon-search"></i>
                         Search
-                    </button>
+                    </button>*@
+                    <div class="input-group pull-right navbar-right">
+                        @Html.TextBox("q", "", new { @class = "form-control", placeholder = "search for inspiration..." })
+                        <span class="input-group-btn">
+                            <button class="btn btn-success" type="submit">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </span>
+                    </div><!-- /input-group -->
                 </form>
             </div><!--/.nav-collapse -->
         </div>
     </div>
 
     <div class="container">
-
-       @RenderBody()
-
+        <div class="row">
+            <div class="col-lg-12">
+                @Html.Flash()
+            </div>
+        </div>
+        @RenderBody()
     </div> <!-- /container -->
     <!-- Bootstrap core JavaScript
     ================================================== -->

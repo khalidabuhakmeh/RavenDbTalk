@@ -13,7 +13,7 @@
 @using (Html.BeginForm("index", "quotes", FormMethod.Get))
 {
     <div class="input-group">
-    @Html.TextBox("Q", Model.Query, new { @class = "form-control", placeholder = "search for inspiration..." })
+    @Html.TextBox("Q", Model.Query, new { @class = "form-control", placeholder = "search for a quote..." })
     <span class="input-group-btn">
         <button class="btn btn-success" type="submit">
             <i class="glyphicon glyphicon-search"></i>
@@ -33,21 +33,43 @@
 <div class="row">
     @foreach (var quote in Model.Quotes)
     {
+        @Html.Partial("_Quote", quote)
+    }
+    
+    @if (Model.HasSuggestions)
+    {
         <div class="col-lg-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <a href="@Url.Action("index", "quotes", new { by = quote.By })" class="label label-success">@quote.By</a>
-                    <a href="@Url.Action("index", "quotes", new { category = quote.Category })" class="label label-info">@quote.Category</a>
+                    Ooops... No Results Found. Do any of these suggestions look helpful?
                 </div>
                 <div class="panel-body">
-                    <blockquote>
-                        <p>@quote.Text</p>
-                        <cite>- @quote.By</cite>
-                    </blockquote>
+                    <p>
+                        @foreach (var suggestion in Model.Suggestions.Suggestions)
+                        {
+                            <a class="label label-default" style="font-size: 18px; display: inline-block; margin: 8px" href="@Url.Action("index", "quotes", new {q = suggestion})"> @suggestion</a>
+                        }
+                    </p>
                 </div>
             </div>
         </div>
     }
+    else if (!Model.Quotes.Any())
+    {
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Ooops... No Results Found.
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Sorry but we couldn't find any quotes at this time, please forgive us.
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
+
 </div>
 
 <div class="text-center">
