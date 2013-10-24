@@ -11,9 +11,22 @@
                 <p>@Model.Text</p>
                 <cite>- @Model.By</cite>
             </blockquote>
+            <hr/>
             <a class="btn btn-info pull-right" href="@Url.Action("show", "quotes", new { id = Model.Id })">
                 More...
             </a>
-        </div>
+            <a class="btn btn-success" href="http://twitter.com/share?url=@(Url.Action("show", "quotes", new { id = Model.Id }, "http"))&text=I really enjoyed this quote from @Model.By! @(Url.Action("show", "quotes", new { id = Model.Id }, "http"))&via=quotely" target="_blank">
+                <i class="fa fa-twitter"></i>
+                Twitter
+            </a> 
+            <a class="btn btn-success" href="https://www.facebook.com/sharer/sharer.php?u=@Url.Action("show", "quotes", new { id = Model.Id })" target="_blank">
+                <i class="fa fa-facebook"></i>
+                Facebook
+            </a>
+            <a class="btn btn-success" href="https://plus.google.com/share?url=@Url.Action("show", "quotes", new { id = Model.Id })" target="_blank">
+                <i class="fa fa-google-plus"></i>
+                Google+
+            </a>
+</div>
     </div>
 </div>

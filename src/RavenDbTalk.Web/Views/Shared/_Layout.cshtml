@@ -100,15 +100,24 @@
             </div><!--/.nav-collapse -->
         </div>
     </div>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                @Html.Flash()
+    <div id="wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    @Html.Flash()
+                </div>
             </div>
+            @RenderBody()
+        </div> <!-- /container -->
+    </div>
+    <div id="footer">
+        <div class="container">
+            <p class="text-muted credit">
+                Example courtesy of <a href="http://khalidabuhakmeh.com">Khalid Abuhakmeh</a> and powered by <a href="http://ravendb.net">RavenDB</a>. Thanks goes to <a href="http://thewebminer.com/download">The Web Miner</a> for their quotes data.
+            </p>
         </div>
-        @RenderBody()
-    </div> <!-- /container -->
+    </div>
+
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
