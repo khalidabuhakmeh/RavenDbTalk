@@ -48,7 +48,6 @@
                     <li class="@Html.IsActiveCss(new { action = "index", controller = "home" })">
                         <a href="@Url.Action("index", "home")">
                             <i class="fa fa-home"></i>
-                            Home
                         </a>
                     </li>
                     <li class="dropdown">
@@ -77,6 +76,12 @@
                         <a href="@Url.Action("index", "home")#submitQuote">
                             <i class="fa fa-edit"></i>
                             Submit a Quote
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("index", "livequotes")">
+                            <i class="fa fa-magic"></i>
+                            Live
                         </a>
                     </li>
                 </ul>
@@ -123,5 +128,10 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="~/content/js/jquery.min.js"></script>
     <script src="~/content/js/bootstrap.min.js"></script>
+    <script src="~/content/js/jquery.signalR-2.0.0.min.js"></script>
+    <script src="~/content/js/knockout-3.0.0rc.js"></script>
+    <script src="~/signalr/hubs"></script>
+    <script src="~/content/js/quotely.js"></script>
+    @RenderSection("scripts", false)
 </body>
 </html>

@@ -21,6 +21,11 @@ namespace RavenDbTalk.Web
                 uq.As("user-quotes");
                 uq.Only("create");
             });
+            map.Resources<LiveQuotesController>(l =>
+            {
+                l.As("live");
+                l.Only("index");
+            });
         }
 
         public static void Start()

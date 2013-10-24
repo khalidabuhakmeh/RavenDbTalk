@@ -54,14 +54,14 @@ border-color: #f1e7bc;
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199px) {
     #layout-search {
-        width: 200px;
+        width: 180px;
     }    
 }
 
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
     #layout-search {
-        width: 400px;
+        width: 380px;
     }      
 }
 

@@ -1,0 +1,73 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="page-header">
+    <h2> Live Quotes </h2>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <form role="form">
+            <div class="form-group">
+                <label for="by">Name</label>
+                @Html.TextBox("by", "", new { placeholder = "author's name", @class = "form-control", data_bind = "value: name" })
+            </div>
+            <div class="form-group">
+                <label for="text">Quote</label>
+                @Html.TextArea("Text", "", new { placeholder = "author's words", @class = "form-control", rows = "2", data_bind = "value: text" })
+            </div>
+            <button type="button" class="btn btn-success btn-block" data-bind="click: create">
+                <i class="fa fa-check"></i>
+                Submit
+            </button>
+        </form>
+    </div>
+</div>
+
+<br/>
+
+<div class="row" data-bind="visible: !any()">
+    <div class="col-lg-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                We're waiting for incoming thoughts
+            </div>
+            <div class="panel-body">
+                <blockquote>
+                    If you don't have anything nice to say, then don't say anything at all
+                    <cite>- Jo Mama</cite>
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div data-bind="foreach: { data: thoughts, afterRender: show }">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="label label-success" data-bind="text: name"></span>
+                    <span class="label label-info">Live</span>
+                </div>
+                <div class="panel-body">
+                    <blockquote>
+                        <p data-bind="text: text"></p>
+                        <cite>- <span data-bind="text: name"></span></cite>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            var vm = new Quotely.LiveViewModel();
+            ko.applyBindings(vm);
+        });
+    </script>
+}
