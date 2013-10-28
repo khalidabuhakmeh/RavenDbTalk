@@ -37,7 +37,7 @@ namespace RavenDbTalk.Web.Controllers
             Db.Advanced.Eagerly.ExecuteAllPendingLazyOperations();
 
             model.RandomAuthors = authors.Value.ToList();
-            model.RandomQuote = quote.Value.FirstOrDefault();
+            model.RandomQuote = quote.Value.FirstOrDefault() ?? new Quote();
             model.RandomCategories = categories.Value.ToList();
 
             return View(model);
