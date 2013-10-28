@@ -24,10 +24,8 @@ namespace RavenDbTalk.Web.Controllers
                 .As<AuthorWithCount>()
                 .ToPagedList(search.Page, search.Size);
 
-            if (!model.Authors.Any())
-            {
+            if (model.CanGetSuggestions)
                 model.Suggestions = query.Suggest();
-            }
 
             return View(model);
         }

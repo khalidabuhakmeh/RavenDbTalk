@@ -42,6 +42,14 @@ namespace RavenDbTalk.Web.Models.ViewModels.Authors
         }
 
         public SuggestionQueryResult Suggestions { get; set; }
+
+        public bool CanGetSuggestions
+        {
+            get
+            {
+                return HasQuery && !Authors.Any();
+            }
+        }
     }
 
     public class AuthorWithCount

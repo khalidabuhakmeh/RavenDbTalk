@@ -22,10 +22,8 @@ namespace RavenDbTalk.Web.Controllers
             model.Categories =  query.As<CategoryWithCount>()
                 .ToPagedList(search.Page, search.Size);
 
-            if (!model.Categories.Any())
-            {
+            if (model.CanGetSuggestions)
                 model.Suggestions = query.Suggest();
-            }
 
             return View(model);
         }

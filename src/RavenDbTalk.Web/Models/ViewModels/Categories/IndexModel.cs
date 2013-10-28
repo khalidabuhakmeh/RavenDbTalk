@@ -40,5 +40,12 @@ namespace RavenDbTalk.Web.Models.ViewModels.Categories
         }
 
         public SuggestionQueryResult Suggestions { get; set; }
+        public bool CanGetSuggestions
+        {
+            get
+            {
+                return (HasQuery) && Categories.Any();
+            }
+        }
     }
 }

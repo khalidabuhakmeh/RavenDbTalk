@@ -27,10 +27,8 @@ namespace RavenDbTalk.Web.Controllers
                 .As<Quote>()
                 .ToPagedList(model.Page, model.Size);
 
-            if (!model.Quotes.Any())
-            {
+            if (model.CanGetSuggestions)
                 model.Suggestions = query.Suggest();
-            }
 
             return View(model);
         }

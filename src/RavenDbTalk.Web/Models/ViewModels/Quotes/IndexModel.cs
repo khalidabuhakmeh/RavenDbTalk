@@ -66,5 +66,13 @@ namespace RavenDbTalk.Web.Models.ViewModels.Quotes
         }
 
         public SuggestionQueryResult Suggestions { get; set; }
+
+        public bool CanGetSuggestions
+        {
+            get
+            {
+                return (HasQuery || HasCategory || HasBy) && Quotes.Any();
+            }
+        }
     }
 }
