@@ -24,7 +24,7 @@ namespace RavenDbTalk.Web.Models.ViewModels.Categories
         public string Query { get; set; }
 
         public bool HasQuery { get { return !string.IsNullOrWhiteSpace(Query); } }
-        public bool HasSuggestions { get { return !Categories.Any() && Suggestions.Suggestions.Any(); } }
+        public bool HasSuggestions { get { return !Categories.Any() && Suggestions != null && Suggestions.Suggestions.Any(); } }
 
         public string Header
         {

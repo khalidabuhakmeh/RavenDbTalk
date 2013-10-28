@@ -25,7 +25,7 @@ namespace RavenDbTalk.Web.Models.ViewModels.Authors
         public string Query { get; set; }
 
         public bool HasQuery { get { return !string.IsNullOrWhiteSpace(Query); } }
-        public bool HasSuggestions { get { return !Authors.Any() && Suggestions.Suggestions.Any(); } }
+        public bool HasSuggestions { get { return !Authors.Any() && Suggestions != null && Suggestions.Suggestions.Any(); } }
 
         public string Header
         {

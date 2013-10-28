@@ -40,7 +40,7 @@ namespace RavenDbTalk.Web.Models.ViewModels.Quotes
         public bool HasQuery { get { return !string.IsNullOrWhiteSpace(Query); } }
         public bool HasCategory { get { return !string.IsNullOrWhiteSpace(Category); } }
         public bool HasBy { get { return !string.IsNullOrWhiteSpace(By); } }
-        public bool HasSuggestions { get { return !Quotes.Any() && Suggestions.Suggestions.Any(); } }
+        public bool HasSuggestions { get { return !Quotes.Any() && Suggestions != null && Suggestions.Suggestions.Any(); } }
 
         public string Header
         {
