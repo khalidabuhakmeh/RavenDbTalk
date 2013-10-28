@@ -73,7 +73,7 @@ namespace RavenDbTalk.Web.Models.ViewModels.Quotes
         {
             get
             {
-                return (HasQuery || HasCategory || HasBy) && Quotes.Any();
+                return (HasQuery || HasCategory || HasBy) && !Quotes.Any();
             }
         }
     }

@@ -47,7 +47,7 @@ namespace RavenDbTalk.Web.Models.ViewModels.Categories
         {
             get
             {
-                return (HasQuery) && Categories.Any();
+                return (HasQuery) && !Categories.Any();
             }
         }
     }
