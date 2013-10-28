@@ -8,6 +8,7 @@ using System.Web.UI;
 using PagedList;
 using Raven.Abstractions.Data;
 using RavenDbTalk.Web.Models.Domain;
+using RavenDbTalk.Web.Models.Extensions;
 
 namespace RavenDbTalk.Web.Models.ViewModels.Quotes
 {
@@ -40,7 +41,7 @@ namespace RavenDbTalk.Web.Models.ViewModels.Quotes
         public bool HasQuery { get { return !string.IsNullOrWhiteSpace(Query); } }
         public bool HasCategory { get { return !string.IsNullOrWhiteSpace(Category); } }
         public bool HasBy { get { return !string.IsNullOrWhiteSpace(By); } }
-        public bool HasSuggestions { get { return !Quotes.Any() && Suggestions != null && Suggestions.Suggestions.Any(); } }
+        public bool HasSuggestions { get { return !Quotes.Any() && Suggestions.NotEmpty(); } }
 
         public string Header
         {

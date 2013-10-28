@@ -11,4 +11,14 @@ namespace RavenDbTalk.Web.Models.Domain
         public string By { get; set; }
         public string Category { get; set; }
     }
+
+    public sealed class InstructionalQuote : Quote
+    {
+        public InstructionalQuote()
+        {
+            Text = "Please remember to load the sample data found in the data direction of this repository";
+            By = "Khalid Abuhakmeh";
+            Category = "helpful hints";
+        }
+    }
 }

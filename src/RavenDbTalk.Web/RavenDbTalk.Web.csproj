@@ -183,6 +183,7 @@
     <Compile Include="Models\Domain\Quote.cs" />
     <Compile Include="Models\Domain\Thought.cs" />
     <Compile Include="Models\Extensions\RavenHelpers.cs" />
+    <Compile Include="Models\Extensions\SuggestionExtensions.cs" />
     <Compile Include="Models\Hubs\LiveHub.cs" />
     <Compile Include="Models\Indexes\Quotes_ByAuthor.cs" />
     <Compile Include="Models\Indexes\Quotes_ByCategory.cs" />

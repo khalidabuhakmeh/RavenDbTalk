@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text;
 using PagedList;
 using Raven.Abstractions.Data;
+using RavenDbTalk.Web.Models.Extensions;
 using RavenDbTalk.Web.Models.ViewModels.Menus;
 
 namespace RavenDbTalk.Web.Models.ViewModels.Authors
@@ -25,7 +26,7 @@ namespace RavenDbTalk.Web.Models.ViewModels.Authors
         public string Query { get; set; }
 
         public bool HasQuery { get { return !string.IsNullOrWhiteSpace(Query); } }
-        public bool HasSuggestions { get { return !Authors.Any() && Suggestions != null && Suggestions.Suggestions.Any(); } }
+        public bool HasSuggestions { get { return !Authors.Any() && Suggestions.NotEmpty(); } }
 
         public string Header
         {
