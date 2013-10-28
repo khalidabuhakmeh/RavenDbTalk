@@ -16,6 +16,7 @@ namespace RavenDbTalk.Web.Models.ViewModels.Authors
         }
 
         public IndexModel(SearchModel search)
+            : this()
         {
             Query = search.Q;
         }

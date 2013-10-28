@@ -16,6 +16,7 @@ namespace RavenDbTalk.Web.Models.ViewModels.Quotes
         public IndexModel()
         {
             Quotes = new PagedList<Quote>(new List<Quote>(), 1, 25);
+            Suggestions = new SuggestionQueryResult();
         }
 
         public IndexModel(SearchModel search)

@@ -11,9 +11,11 @@ namespace RavenDbTalk.Web.Models.ViewModels.Categories
         public IndexModel()
         {
             Categories = new StaticPagedList<CategoryWithCount>(new List<CategoryWithCount>(), 1, 25, 0);
+            Suggestions = new SuggestionQueryResult();
         }
 
         public IndexModel(SearchModel search)
+            : this()
         {
             Query = search.Q;
         }
