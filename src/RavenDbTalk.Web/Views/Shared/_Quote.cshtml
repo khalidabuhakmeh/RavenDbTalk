@@ -8,7 +8,7 @@
         </div>
         <div class="panel-body">
             <blockquote>
-                <p>@Model.Text</p>
+                <p>@Model.Text</p>http://static.ravendb.net/badges/standard/badge1.png
                 <cite>- @Model.By</cite>
             </blockquote>
             <hr />
@@ -19,11 +19,11 @@
                 <i class="fa fa-twitter"></i>
                 Twitter
             </a>
-            <a class="btn btn-success" href="https://www.facebook.com/sharer/sharer.php?u=@Url.Action("show", "quotes", new { id = Model.Id })" target="_blank">
+            <a class="btn btn-success" href="https://www.facebook.com/sharer/sharer.php?u=@Url.Action("show", "quotes", new { id = Model.Id }, "http")" target="_blank">
                 <i class="fa fa-facebook"></i>
                 Facebook
             </a>
-            <a class="btn btn-success" href="https://plus.google.com/share?url=@Url.Action("show", "quotes", new { id = Model.Id })" target="_blank">
+            <a class="btn btn-success" href="https://plus.google.com/share?url=@Url.Action("show", "quotes", new { id = Model.Id }, "http")" target="_blank">
                 <i class="fa fa-google-plus"></i>
                 Google+
             </a>

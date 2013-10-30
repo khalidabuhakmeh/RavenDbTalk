@@ -212,6 +212,8 @@
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Content\img\ravendb.png" />
+    <Content Include="Content\img\ravenhq.png" />
     <Content Include="Content\js\bootstrap.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\html5shiv.js" />
