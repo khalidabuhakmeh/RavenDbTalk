@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.AspNet.SignalR;
 using Raven.Abstractions.Data;
+using Raven.Client.Document;
 using RavenDbTalk.Web.App_Start;
 using RavenDbTalk.Web.Models.Domain;
 
@@ -10,9 +11,11 @@ namespace RavenDbTalk.Web.Models.Hubs
     {
         static LiveHub()
         {
+            var database = RavenDbConfiguration.DatabaseName;
+
             // RavenDB Changes code
             RavenDbConfiguration.DocumentStore
-                       .Changes()
+                       .Changes(database)
                        .ForDocumentsStartingWith("thoughts")
                        .Subscribe(change =>
                        {

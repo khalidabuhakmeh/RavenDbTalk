@@ -1,4 +1,5 @@
-﻿using Raven.Client;
+﻿using System.Configuration;
+using Raven.Client;
 using Raven.Client.Document;
 using Raven.Client.Indexes;
 
@@ -14,6 +15,14 @@ namespace RavenDbTalk.Web.App_Start
                 IdentityPartsSeparator = "-"
             }
         }.Initialize();
+
+        public static string DatabaseName
+        {
+            get
+            {
+                return ConfigurationManager.AppSettings["DatabaseName"];
+            }
+        }
 
         public static void Start()
         {
