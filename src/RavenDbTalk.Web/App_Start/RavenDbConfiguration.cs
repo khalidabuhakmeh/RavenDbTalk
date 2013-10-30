@@ -12,7 +12,8 @@ namespace RavenDbTalk.Web.App_Start
             ConnectionStringName = "Quotely",
             Conventions =
             {
-                IdentityPartsSeparator = "-"
+                IdentityPartsSeparator = "-",
+                FailoverBehavior = FailoverBehavior.FailImmediately
             }
         }.Initialize();
 
