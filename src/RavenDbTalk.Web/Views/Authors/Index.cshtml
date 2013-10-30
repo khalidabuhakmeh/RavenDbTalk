@@ -22,7 +22,7 @@
 
 <div class="text-center">
     <div class="pagination pagination-lg">
-        @Html.PagedListPager(Model.Authors, i => Url.Action("index", new { page = i, size = Model.Authors.PageSize }))
+        @Html.PagedListPager(Model.Authors, i => Url.Action("index", new { page = i, size = Model.Authors.PageSize, q = Model.Query }))
     </div>
 </div>
 
@@ -76,6 +76,6 @@
 
 <div class="text-center">
     <div class="pagination pagination-lg">
-        @Html.PagedListPager(Model.Authors, i => Url.Action("index", new { page = i, size = Model.Authors.PageSize }))
+        @Html.PagedListPager(Model.Authors, i => Url.Action("index", new { page = i, size = Model.Authors.PageSize, q = Model.Query }))
     </div>
 </div>
