@@ -18,8 +18,8 @@ namespace RavenDbTalk.Tests
                 var normal = new Stopwatch();
                 normal.Start();
                 
-                // 1 million documents
-                for (var i = 0; i < 100; i++)
+                // 1000 documents
+                for (var i = 0; i < 1000; i++)
                 {
                     using (var session = store.OpenSession())
                     {
@@ -48,7 +48,7 @@ namespace RavenDbTalk.Tests
                 Debug.WriteLine(string.Format("bulk : {0}", bulk.Elapsed.TotalSeconds));
 
                 // Bulk insert is always faster
-                bulk.Elapsed.Should().BeLessThan(normal.Elapsed);
+                bulk.Elapsed.Should().BeLessOrEqualTo(normal.Elapsed);
 
                 // ## Limitations
                 // - Entity Id must be provided at the client side. The client by default will use the HiLo generator in order to generate the Id.
