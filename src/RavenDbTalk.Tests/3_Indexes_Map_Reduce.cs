@@ -49,7 +49,8 @@ namespace RavenDbTalk.Tests
             }
         }
 
-        public class Example_Index : AbstractIndexCreationTask<Example, Example_Index.Result>
+        public class Example_Index : 
+            AbstractIndexCreationTask<Example, Example_Index.Result>
         {
             public class Result
             {
@@ -88,7 +89,8 @@ namespace RavenDbTalk.Tests
             }
         }
 
-        public class Example_Tags : AbstractIndexCreationTask<Example, Example_Tags.Result>
+        public class Example_Tags 
+            : AbstractIndexCreationTask<Example, Example_Tags.Result>
         {
             public class Result
             {
@@ -138,7 +140,8 @@ namespace RavenDbTalk.Tests
             }
         }
 
-        public class Animals_Index : AbstractMultiMapIndexCreationTask<Animals_Index.Result>
+        public class Animals_Index 
+            : AbstractMultiMapIndexCreationTask<Animals_Index.Result>
         {
             public class Result
             {
@@ -169,7 +172,7 @@ namespace RavenDbTalk.Tests
                 }
 
                 WaitForIndexing(store);
-                WaitForUserToContinueTheTest(store);
+                //WaitForUserToContinueTheTest(store);
 
                 using (var session = store.OpenSession())
                 {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 using FluentAssertions;
 using Raven.Tests.Helpers;
 using Xunit;
@@ -38,6 +39,8 @@ namespace RavenDbTalk.Tests
                     session.Store(new { Id = "trigger/change", text = "yes we can!" });
                     session.SaveChanges();
                 }
+
+                Thread.Sleep(1000);
 
                 // We made the change and 
                 // we changed this field

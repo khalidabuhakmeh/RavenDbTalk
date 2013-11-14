@@ -82,7 +82,7 @@ namespace RavenDbTalk.Tests
                     // we are quering using LINQ!
                     .Where(x => x.Tags.Any(t => t == "product")).ToList();
 
-                WaitForUserToContinueTheTest(_documentStore);
+                //WaitForUserToContinueTheTest(_documentStore);
 
                 // we got some results!
                 result.Count.Should().BeGreaterThan(1);
@@ -129,7 +129,7 @@ namespace RavenDbTalk.Tests
                     // we are quering using LINQ!
                     .Where("Manufacturer: \"company #2\"").ToList();
 
-                WaitForUserToContinueTheTest(_documentStore);
+                //WaitForUserToContinueTheTest(_documentStore);
 
                 // we got some results!
                 result.Count.Should().BeGreaterThan(1);

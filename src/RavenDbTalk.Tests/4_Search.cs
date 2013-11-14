@@ -124,7 +124,6 @@ namespace RavenDbTalk.Tests
             }
         }
 
-
         [Fact]
         public void Can_suggest_words_when_mispellings_occur()
         {

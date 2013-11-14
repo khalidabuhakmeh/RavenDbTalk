@@ -37,7 +37,12 @@ namespace RavenDbTalk.Tests
         [Fact]
         public void Can_have_meaningful_ids_on_documents()
         {
-            var city = new { Id = "usa/pa/philadelphia", Name = "Philadelphia", State = "Pennsylvania" };
+            var city = new
+            {
+                Id = "usa/pa/philadelphia",
+                Name = "Philadelphia",
+                State = "Pennsylvania"
+            };
 
             using (var store = NewDocumentStore())
             {
