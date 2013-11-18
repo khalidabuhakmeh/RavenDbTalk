@@ -16,3 +16,6 @@ If you've never imported data before follow these steps (after you have RavenDB 
 5. Select the file to import from data/Quotely.ravendump
 
 Indexes will be pushed into the database the first time your run the web application. Be patient while the indexes build, it might take a few minutes.
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/khalidabuhakmeh/ravendbtalk/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
