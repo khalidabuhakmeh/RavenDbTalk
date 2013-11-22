@@ -94,7 +94,7 @@ namespace RavenDbTalk.Tests
                 }
 
                 WaitForIndexing(store);
-                WaitForUserToContinueTheTest(store);
+                //WaitForUserToContinueTheTest(store);
 
                 using (var session = store.OpenSession())
                 {

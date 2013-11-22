@@ -61,7 +61,7 @@ namespace RavenDbTalk.Tests
                     // we are quering using LINQ!
                     .Where(x => x.Quantity > 0).ToList();
 
-                WaitForUserToContinueTheTest(_documentStore);
+                //WaitForUserToContinueTheTest(_documentStore);
 
                 // we got some results!
                 result.Count.Should().BeGreaterThan(1);
@@ -99,7 +99,7 @@ namespace RavenDbTalk.Tests
 
             using (var session = _documentStore.OpenSession())
             {
-                var result = session.Query<Example>()
+                var result = session.Query<Example, Examples_ByManufacturer>()
                     // we need to wait for indexes, this is not a good practice
                     // this is purely done for testing purposes
                     .Customize(x => x.WaitForNonStaleResultsAsOfLastWrite())
@@ -145,7 +145,7 @@ namespace RavenDbTalk.Tests
                 // is searchable in your model. Be sure to
                 // only include what is important for searches.
                 Map = examples => from e in examples
-                                  select new { e.Manufacturer };
+                                  select new { e.Manufacturer, e.Tags };
             }
         }
 

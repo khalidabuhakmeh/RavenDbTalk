@@ -35,7 +35,7 @@ namespace RavenDbTalk.Tests
 
                 SeedWithQuotes(store);
                 WaitForIndexing(store);
-                WaitForUserToContinueTheTest(store);
+                //WaitForUserToContinueTheTest(store);
 
                 using (var session = store.OpenSession())
                 {

@@ -44,7 +44,8 @@ namespace RavenDbTalk.Tests
                         .Where(x => x.Cost > 100)
                         .ToList();
 
-                    store.DatabaseCommands.GetIndexes(1, 100).Count().Should().Be(1);
+                    var indexes = store.DatabaseCommands.GetIndexes(1, 100);
+                    indexes.Count().Should().Be(1);
                 }
             }
         }
